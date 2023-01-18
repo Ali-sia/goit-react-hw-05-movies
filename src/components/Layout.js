@@ -5,7 +5,7 @@ import AppBar from './AppBar/AppBar';
 
 const Layout = () => {
   return (
-    <Box>
+    <Box display="flex" align-items="center" flexDirection="column">
       <AppBar />
       {/* <Suspense fallback={null}> */}
       <Outlet />

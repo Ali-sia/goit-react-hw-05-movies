@@ -1,6 +1,6 @@
 import React from 'react';
-import { lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+// import { lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from './GlobalStyle';
 // import { Box } from './Box';
@@ -9,7 +9,7 @@ import Layout from './Layout';
 import Home from '../pages/Home/Home';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import MovieCast from './MovieCast/MovieCast';
-import MovieReviews from './MovieReviews';
+import MovieReviews from './MovieReviews/MovieReviews';
 
 const App = () => {
   return (

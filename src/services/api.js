@@ -31,7 +31,8 @@ export const getMovieReviews = async (movieId, page = 1) => {
     `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&page=${page}&language=en-US&include_adult=false`
   );
 
-  return res.data;
+  console.log('🐉 ~ getMovieReviews ~ res.data', res.data.results);
+  return res.data.results;
 };
 
 export const getMovieByName = async (movieName, page = 1) => {
