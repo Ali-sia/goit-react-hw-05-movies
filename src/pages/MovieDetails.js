@@ -1,7 +1,21 @@
 // import { getCustomerById } from 'fakeApi';
-// import { useState, useEffect } from 'react';
-// import { Link, useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
+import MovieCast from 'components/MovieCast';
+import MovieReviews from 'components/MovieReviews';
+
+const MovieDetails = () => {
+  return (
+    <>
+      <h3>movie details page</h3>
+      <MovieCast />
+      <MovieReviews />
+    </>
+  );
+};
+
+export default MovieDetails;
 // const CustomerDetails = () => {
 //   const { customerId } = useParams();
 //   const [customer, setCustomer] = useState([]);
