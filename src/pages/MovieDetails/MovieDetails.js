@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 // import { Suspense } from 'react';
 
@@ -17,6 +17,7 @@ import {
 const MovieDetails = () => {
   const { moviesId } = useParams();
   const [movie, setMovie] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     getMovieByID(moviesId).then(response => {
@@ -29,9 +30,11 @@ const MovieDetails = () => {
   }
 
   const { id, title, overview, popularity, poster_path, release_date } = movie;
+  const backLinkHref = location.state?.from ?? '/home';
 
   return (
     <Box key={id}>
+      <Link to={backLinkHref}>Back to list</Link>
       <Box display="flex" alignItems="center" p={4}>
         <Box mr={4}>
           <Poster src={`${POSTER_URL}${poster_path}`} alt="poster" />
@@ -49,12 +52,10 @@ const MovieDetails = () => {
           </MovieParagraph>
         </Box>
       </Box>
-
       <Box as="ul" display="flex" p={4}>
         <NavItem to="cast">Cast</NavItem>
         <NavItem to="reviews">Reviews</NavItem>
       </Box>
-
       {/* <Suspense fallback={null}> */}
       <Outlet />
       {/* </Suspense> */}

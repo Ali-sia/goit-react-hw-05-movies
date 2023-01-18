@@ -1,13 +1,45 @@
-// import { Box } from 'components/Box';
-// import { getCustomers } from 'fakeApi';
-// import { useState, useEffect, useMemo } from 'react';
-// import {
-//   Link,
-//   useLocation,
-//   useParams,
-//   useSearchParams,
-// } from 'react-router-dom';
-// import SearchBox from 'components/SearchBox';
+import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
+import SearchBox from 'components/SearchBox';
+import { useState, useEffect, useMemo } from 'react';
+
+import { getMovieByName } from 'services/api';
+
+import { Box } from 'components/Box';
+
+const Movies = () => {
+  const location = useLocation();
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchRequest = searchParams.get('query');
+
+  useEffect(() => {
+    if (!searchRequest) return;
+
+    getMovieByName(searchRequest).then(response => {
+      setMovies(response);
+    });
+  }, [searchRequest]);
+
+  const changeQuery = value => {
+    setSearchParams(value !== '' ? { query: value } : {});
+  };
+
+  return (
+    <Box>
+      <SearchBox onSubmit={changeQuery} />
+
+      {/* <Box as="ul" display="flex" flexDirection="column">
+        {movies.map(({ title, id }) => (
+          <NavLink to={`/movies/${id}`} state={{ from: location }} key={id}>
+            {title}
+          </NavLink>
+        ))}
+      </Box> */}
+    </Box>
+  );
+};
+
+export default Movies;
 
 // const Customers = () => {
 //   const location = useLocation();

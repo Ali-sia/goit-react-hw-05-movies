@@ -10,6 +10,7 @@ import Home from '../pages/Home/Home';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import MovieCast from './MovieCast/MovieCast';
 import MovieReviews from './MovieReviews/MovieReviews';
+import Movies from 'pages/Movies/Movies';
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
-          <Route path="movies" element={<h2>filter page</h2>}></Route>
+          <Route path="movies" element={<Movies />}></Route>
         </Route>
         <Route
           path="*"
