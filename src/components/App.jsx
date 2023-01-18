@@ -7,7 +7,9 @@ import { GlobalStyle } from './GlobalStyle';
 
 import Layout from './Layout';
 import Home from '../pages/Home/Home';
-import MovieDetails from 'pages/MovieDetails';
+import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import MovieCast from './MovieCast/MovieCast';
+import MovieReviews from './MovieReviews';
 
 const App = () => {
   return (
@@ -16,8 +18,8 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route path="home" element={<Home />} />
           <Route path="movies/:moviesId" element={<MovieDetails />}>
-            <Route path="cast" element={<h2>cast</h2>} />
-            <Route path="reviews" element={<h2>reviews</h2>} />
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
           </Route>
           <Route path="movies" element={<h2>filter page</h2>}></Route>
         </Route>

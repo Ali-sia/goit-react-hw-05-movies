@@ -12,8 +12,8 @@ const Home = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    getTrandingMovies().then(results => {
-      setMovies(results);
+    getTrandingMovies().then(response => {
+      setMovies(response);
     });
   }, []);
 
