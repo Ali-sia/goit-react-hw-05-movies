@@ -12,15 +12,20 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchRequest = searchParams.get('query');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!searchRequest) return;
 
-    getMovieByName(searchRequest).then(response => {
-      setMovies(response);
-    });
+    getMovieByName(searchRequest)
+      .then(response => {
+        setMovies(response);
+      })
+      .catch(error => {
+        setError('Ooops. Something went wrong...');
+        console.log(error);
+      });
   }, [searchRequest]);
-  console.log('🌼🌼🌼  ---> useEffect  ---> searchRequest', searchRequest);
 
   const changeQuery = value => {
     setSearchParams(value !== '' ? { query: value } : {});
@@ -29,6 +34,7 @@ const Movies = () => {
   return (
     <Box p={4}>
       <SearchBox onSubmit={changeQuery} />
+      {error && <div>{error}</div>}
 
       <Box as="ul" display="flex" flexDirection="column">
         {movies.map(({ title, id }) => (

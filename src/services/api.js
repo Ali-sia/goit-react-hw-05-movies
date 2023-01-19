@@ -30,6 +30,7 @@ export const getMovieReviews = async (movieId, page = 1) => {
   const res = await axios.get(
     `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&page=${page}&language=en-US&include_adult=false`
   );
+
   return res.data.results;
 };
 

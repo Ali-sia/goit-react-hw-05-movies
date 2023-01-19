@@ -9,12 +9,17 @@ import { Box } from '../Box';
 const MovieReviews = () => {
   const { moviesId } = useParams();
   const [reviews, setReviews] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMovieReviews(moviesId).then(response => {
-      console.log('response :>> ', response);
-      setReviews(response);
-    });
+    getMovieReviews(moviesId)
+      .then(response => {
+        setReviews(response);
+      })
+      .catch(error => {
+        setError('Ooops. Something went wrong...');
+        console.log(error);
+      });
   }, [moviesId]);
 
   if (!reviews) {
@@ -23,14 +28,21 @@ const MovieReviews = () => {
 
   return (
     <Box as="ul" p={4}>
-      {reviews.map(({ id, author, content }) => {
-        return (
-          <li key={id}>
-            <b>{author}</b>
-            <p>{content}</p>
-          </li>
-        );
-      })}
+      {error && <div>{error}</div>}
+      {reviews.length > 0 ? (
+        <>
+          {reviews.map(({ id, author, content }) => {
+            return (
+              <li key={id}>
+                <b>{author}</b>
+                <p>{content}</p>
+              </li>
+            );
+          })}
+        </>
+      ) : (
+        <Box>We don`t have any reviews yet</Box>
+      )}
     </Box>
   );
 };

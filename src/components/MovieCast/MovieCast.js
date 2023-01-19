@@ -15,11 +15,17 @@ import {
 const MovieCast = () => {
   const { moviesId } = useParams();
   const [cast, setCast] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMovieCast(moviesId).then(response => {
-      setCast(response.cast);
-    });
+    getMovieCast(moviesId)
+      .then(response => {
+        setCast(response.cast);
+      })
+      .catch(error => {
+        setError('Ooops. Something went wrong...');
+        console.log(error);
+      });
   }, [moviesId]);
 
   if (!cast) {
