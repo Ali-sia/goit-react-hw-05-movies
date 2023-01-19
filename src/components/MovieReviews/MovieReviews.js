@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/api';
 
 import { Box } from '../Box';
-// import { Photo, CharacterName, ActorName } from './MovieReviews.styled';
 
 const MovieReviews = () => {
   const { moviesId } = useParams();

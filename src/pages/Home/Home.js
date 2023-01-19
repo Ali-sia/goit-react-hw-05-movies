@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
-// import { Outlet } from 'react-router-dom';
 
 import { getTrandingMovies } from '../../services/api';
 
 import { Box } from 'components/Box';
 import { NavItem } from './Home.styled';
-
-// import { Suspense } from 'react';
 
 const Home = () => {
   const [movies, setMovies] = useState(null);

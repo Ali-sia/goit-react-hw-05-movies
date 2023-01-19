@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 
 import { getMovieCast, POSTER_URL } from 'services/api';
 
-import { Box } from '../Box';
 import {
   Photo,
   CharacterName,
