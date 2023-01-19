@@ -6,7 +6,7 @@ export const NavItem = styled(NavLink)`
   align-items: center;
   gap: ${p => p.theme.space[3]}px;
   padding: ${p => p.theme.space[3]}px;
-  border-radius: 4px;
+  border-radius: ${p => p.theme.radii.sm};
   text-decoration: none;
   color: ${p => p.theme.colors.text};
   &.active {
