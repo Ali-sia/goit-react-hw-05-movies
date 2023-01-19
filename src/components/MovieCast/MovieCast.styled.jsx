@@ -18,6 +18,8 @@ export const CastItem = styled.li`
   width: 150px;
   min-heght: 200px;
   margin: ${p => p.theme.space[4]}px;
+  padding: ${p => p.theme.space[3]}px;
+  border-radius: ${p => p.theme.radii.sm};
   overflow: hidden;
   box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
 `;
