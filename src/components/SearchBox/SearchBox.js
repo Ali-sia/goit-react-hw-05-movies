@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Form } from './SearchBox.styled';
+import { Form, FormButton, FormInput } from './SearchBox.styled';
 
 const SearchBox = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,8 +17,8 @@ const SearchBox = ({ onSubmit }) => {
 
   return (
     <Form onSubmit={onFormSubmit}>
-      <input type="text" onChange={handleQuerySearch} />
-      <button type="submit">Search</button>
+      <FormInput type="text" onChange={handleQuerySearch} />
+      <FormButton type="submit">Search</FormButton>
     </Form>
   );
 };
