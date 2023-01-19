@@ -4,7 +4,13 @@ import { useParams } from 'react-router-dom';
 import { getMovieCast, POSTER_URL } from 'services/api';
 
 import { Box } from '../Box';
-import { Photo, CharacterName, ActorName } from './MovieCast.styled';
+import {
+  Photo,
+  CharacterName,
+  ActorName,
+  CastList,
+  CastItem,
+} from './MovieCast.styled';
 
 const MovieCast = () => {
   const { moviesId } = useParams();
@@ -21,17 +27,18 @@ const MovieCast = () => {
   }
 
   return (
-    <Box as="ul" p={4}>
+    <CastList>
+      {error && <div>{error}</div>}
       {cast.map(({ id, name, character, profile_path }) => {
         return (
-          <li key={id}>
+          <CastItem key={id}>
             <Photo src={`${POSTER_URL}${profile_path}`} />
-            <CharacterName>Character - {character}</CharacterName>
-            <ActorName>Actor - {name}</ActorName>
-          </li>
+            <CharacterName>{character}</CharacterName>
+            <ActorName>{name}</ActorName>
+          </CastItem>
         );
       })}
-    </Box>
+    </CastList>
   );
 };
 
