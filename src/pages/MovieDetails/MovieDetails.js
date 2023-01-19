@@ -57,7 +57,7 @@ const MovieDetails = () => {
           </MovieParagraph>
           <MovieParagraph>
             <MovieCaption>Genres</MovieCaption>
-            {movie.genres.map(genre => {
+            {genres.map(genre => {
               return <li key={genre.id}>{genre.name}</li>;
             })}
           </MovieParagraph>
