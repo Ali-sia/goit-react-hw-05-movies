@@ -1,10 +1,11 @@
-import { NavLink, Link, useLocation, useSearchParams } from 'react-router-dom';
-import SearchBox from 'components/SearchBox';
-import { useState, useEffect, useMemo } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import { getMovieByName } from 'services/api';
+import SearchBox from 'components/SearchBox/SearchBox';
 
 import { Box } from 'components/Box';
+import { NavItem } from './Movies.styled';
 
 const Movies = () => {
   const location = useLocation();
@@ -19,22 +20,23 @@ const Movies = () => {
       setMovies(response);
     });
   }, [searchRequest]);
+  console.log('🌼🌼🌼  ---> useEffect  ---> searchRequest', searchRequest);
 
   const changeQuery = value => {
     setSearchParams(value !== '' ? { query: value } : {});
   };
 
   return (
-    <Box>
+    <Box p={4}>
       <SearchBox onSubmit={changeQuery} />
 
-      {/* <Box as="ul" display="flex" flexDirection="column">
+      <Box as="ul" display="flex" flexDirection="column">
         {movies.map(({ title, id }) => (
-          <NavLink to={`/movies/${id}`} state={{ from: location }} key={id}>
+          <NavItem to={`/movies/${id}`} state={{ from: location }} key={id}>
             {title}
-          </NavLink>
+          </NavItem>
         ))}
-      </Box> */}
+      </Box>
     </Box>
   );
 };

@@ -1,4 +1,7 @@
 import { useState } from 'react';
+
+import { Form } from './SearchBox.styled';
+
 const SearchBox = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -6,17 +9,17 @@ const SearchBox = ({ onSubmit }) => {
     setSearchQuery(e.target.value.toLowerCase());
   };
 
+  const onFormSubmit = e => {
+    e.preventDefault();
+    onSubmit(searchQuery);
+    setSearchQuery('');
+  };
+
   return (
-    <form
-      onSubmit={e => {
-        e.preventDefault();
-        onSubmit(e.currentTarget.value);
-        console.log('🐉 ~ SearchBox ~ e.target.value', e.target.value);
-      }}
-    >
+    <Form onSubmit={onFormSubmit}>
       <input type="text" onChange={handleQuerySearch} />
-      <button type="submit">search</button>
-    </form>
+      <button type="submit">Search</button>
+    </Form>
   );
 };
 

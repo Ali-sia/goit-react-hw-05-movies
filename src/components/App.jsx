@@ -1,6 +1,6 @@
 import React from 'react';
 // import { lazy } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyle } from './GlobalStyle';
 // import { Box } from './Box';
@@ -17,6 +17,7 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="home" />} />
           <Route path="home" element={<Home />} />
           <Route path="movies/:moviesId" element={<MovieDetails />}>
             <Route path="cast" element={<MovieCast />} />
