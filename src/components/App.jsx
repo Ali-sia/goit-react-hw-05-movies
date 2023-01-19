@@ -1,16 +1,18 @@
 import React from 'react';
-// import { lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { GlobalStyle } from './GlobalStyle';
-// import { Box } from './Box';
 
 import Layout from './Layout';
-import Home from '../pages/Home/Home';
-import MovieDetails from 'pages/MovieDetails/MovieDetails';
-import MovieCast from './MovieCast/MovieCast';
-import MovieReviews from './MovieReviews/MovieReviews';
-import Movies from 'pages/Movies/Movies';
+
+const Home = lazy(() => import('../pages/Home/Home'));
+const MovieDetails = lazy(() => import('../pages/MovieDetails/MovieDetails'));
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieCast = lazy(() => import('../components/MovieCast/MovieCast'));
+const MovieReviews = lazy(() =>
+  import('../components/MovieReviews/MovieReviews')
+);
 
 const App = () => {
   return (

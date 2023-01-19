@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams, Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 import { getMovieByID, POSTER_URL } from 'services/api';
+import Loader from 'components/Loader';
 
 import { Box } from 'components/Box';
 import {
@@ -70,7 +72,9 @@ const MovieDetails = () => {
         <NavItem to="reviews">Reviews</NavItem>
       </Box>
 
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Box>
   );
 };
